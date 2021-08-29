@@ -1,28 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <WeatherAppHome />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import WeatherAppHome from "@/components/WeatherAppHome/WeatherAppHome";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    WeatherAppHome,
   },
 };
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: "Roboto", sans-serif;
+  font-size: 110%;
+}
+
+.wi {
+  line-height: 1.4;
+  font-size: 45px;
 }
 </style>
