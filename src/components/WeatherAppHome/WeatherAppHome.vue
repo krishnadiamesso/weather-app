@@ -6,9 +6,13 @@
         If requested, approve the geolocation on your browser.
       </p>
     </div>
-    <div v-else class="w3-center">
+    <div v-else class="w3-center w3-margin-top">
       <p class="w3-xlarge">{{ weatherName }}</p>
-      <p id="temperature" style="font-size: 50px">{{ weatherTemperature }} {{ weatherTemperatureSymbol }}</p>
+      <transition mode="out-in" name="fade">
+        <p id="temperature" :key="weatherTemperature" style="font-size: 50px">
+          {{ weatherTemperature }} {{ weatherTemperatureSymbol }}
+        </p>
+      </transition>
       <i class="wi wi-owm-804"></i>
       <p class="capitalize">{{ weatherDescription }}</p>
 
@@ -51,8 +55,6 @@ export default {
   name: "WeatherAppHome",
   data() {
     return {
-      geoTokenApi: "dec14651009b0f",
-      OpenWeatherApi: "749a75bb456c097a2535c0631a2b7973",
       weatherTemperature: "",
       weatherName: "",
       weatherDescription: "",
@@ -65,7 +67,7 @@ export default {
   },
   async created() {
     // Request for user geolocation
-    const geo = await axios.get(`https://ipinfo.io?token=${this.geoTokenApi}`);
+    const geo = await axios.get(`https://ipinfo.io?token=${process.env.VUE_APP_GEO_TOKEN_API}`);
     const locationCoordinates = geo.data.loc.split(",");
     const coordinateLatLong = {
       latitude: locationCoordinates[0],
@@ -75,7 +77,7 @@ export default {
 
     // Request for Weather Api
     const weather = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${coordinateLatLong.latitude}&lon=${coordinateLatLong.longitude}&units=metric&appid=${this.OpenWeatherApi}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${coordinateLatLong.latitude}&lon=${coordinateLatLong.longitude}&units=metric&appid=${process.env.VUE_APP_OPEN_WEATHER_API}`
     );
     this.weatherTemperature = Math.round(weather.data.main.temp);
     this.weatherName = weather.data.name;
