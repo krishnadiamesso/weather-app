@@ -78,3 +78,7 @@ input:checked + .slider:before {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+.activeSymbol {
+  color: white;
+}

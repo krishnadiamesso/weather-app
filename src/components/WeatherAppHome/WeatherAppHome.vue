@@ -37,12 +37,14 @@
       </div>
 
       <div class="w3-margin-top">
-        <span class="w3-margin-right"><i class="wi wi-fahrenheit"></i></span>
+        <span class="w3-margin-right">
+          <i :class="{ activeSymbol: !isChecked }" class="wi wi-fahrenheit"></i>
+        </span>
         <label class="switch">
           <input checked type="checkbox" @click="changeTemperature" />
           <div class="slider round"></div>
         </label>
-        <span class="w3-margin-left"><i class="wi wi-celsius"></i></span>
+        <span class="w3-margin-left"><i :class="{ activeSymbol: isChecked }" class="wi wi-celsius"></i></span>
       </div>
     </div>
   </div>
