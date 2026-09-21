@@ -9,7 +9,7 @@ servers:
 
 proxy:
   ssl: false
-  host: krishnadiamesso.dev
+  host: wazer.krishnadiamesso.dev
   app_port: 3000
   forward_headers: true
   healthcheck:

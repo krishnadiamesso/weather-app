@@ -4,11 +4,8 @@ const app = express();
 
 app.get("/up", (req, res) => res.sendStatus(200));
 
-app.use("/wazer", express.static(path.join(__dirname, "dist")));
-app.get("/wazer/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist/index.html"));
-});
-app.get("/wazer", (req, res) => {
+app.use(express.static(path.join(__dirname, "dist")));
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist/index.html"));
 });
 
