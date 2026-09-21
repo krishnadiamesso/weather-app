@@ -12,6 +12,8 @@ proxy:
   host: krishnadiamesso.dev
   app_port: 3000
   forward_headers: true
+  healthcheck:
+    path: /up
 
 registry:
   server: ghcr.io
