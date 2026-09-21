@@ -1,0 +1,30 @@
+service: wazer
+
+image: krishnadiamesso/wazer
+
+servers:
+  web:
+    hosts:
+      - 46.62.247.235
+
+proxy:
+  ssl: false
+  host: krishnadiamesso.dev
+  app_port: 3000
+  forward_headers: true
+
+registry:
+  server: ghcr.io
+  username: krishnadiamesso
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+  args:
+    VUE_APP_GEO_TOKEN_API: <%= ENV["VUE_APP_GEO_TOKEN_API"] %>
+    VUE_APP_OPEN_WEATHER_API: <%= ENV["VUE_APP_OPEN_WEATHER_API"] %>
+
+env:
+  clear:
+    PORT: 3000
